@@ -5,6 +5,7 @@ import { HostelService, Hostel } from '../../services/hostel.service';
 import { CommentService, Comment } from '../../services/comment.service';
 import { RequestService } from '../../services/request.service';
 import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-hostel-detail',
@@ -17,6 +18,7 @@ export class HostelDetail implements OnInit {
   private hostelService = inject(HostelService);
   private commentService = inject(CommentService);
   private requestService = inject(RequestService);
+  private notificationService = inject(NotificationService);
   auth = inject(AuthService);
 
   hostel = signal<Hostel | null>(null);
@@ -66,11 +68,14 @@ export class HostelDetail implements OnInit {
         this.comments.update((prev) => [comment, ...prev]);
         this.newComment = '';
         this.commentSuccess.set('تم إضافة التعليق بنجاح');
+        this.notificationService.success('تم إضافة التعليق بنجاح ✓');
         this.commentLoading.set(false);
         setTimeout(() => this.commentSuccess.set(''), 3000);
       },
       error: (err) => {
-        this.commentError.set(err?.error?.message ?? 'حدث خطأ أثناء إضافة التعليق');
+        const errorMsg = err?.error?.message ?? 'حدث خطأ أثناء إضافة التعليق';
+        this.commentError.set(errorMsg);
+        this.notificationService.error(errorMsg);
         this.commentLoading.set(false);
       },
     });
@@ -84,10 +89,13 @@ export class HostelDetail implements OnInit {
     this.requestService.create(hostelName).subscribe({
       next: () => {
         this.requestSuccess.set('تم إرسال طلبك بنجاح. سيتم مراجعته من الإدارة');
+        this.notificationService.success('تم إرسال طلبك بنجاح! ستتم مراجعته من الإدارة قريباً ✓');
         this.requestLoading.set(false);
       },
       error: (err) => {
-        this.requestError.set(err?.error?.message ?? 'حدث خطأ أثناء إرسال الطلب');
+        const errorMsg = err?.error?.message ?? 'حدث خطأ أثناء إرسال الطلب';
+        this.requestError.set(errorMsg);
+        this.notificationService.error(errorMsg);
         this.requestLoading.set(false);
       },
     });

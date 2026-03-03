@@ -30148,8 +30148,11 @@ export {
   ɵɵelementStart,
   ɵɵelementEnd,
   ɵɵelement,
+  ɵɵdomElementStart,
+  ɵɵdomElementEnd,
   ɵɵgetCurrentView,
   ɵɵlistener,
+  ɵɵdomListener,
   ɵɵnextContext,
   ɵɵcontentQuery,
   ɵɵqueryRefresh,
@@ -30166,6 +30169,8 @@ export {
   ɵɵtwoWayListener,
   ɵɵProvidersFeature,
   ɵɵpureFunction1,
+  ɵɵpipe,
+  ɵɵpipeBind2,
   ɵsetClassDebugInfo,
   Directive,
   Component,
@@ -30195,6 +30200,7 @@ export {
   PathLocationStrategy,
   Location,
   HashLocationStrategy,
+  DatePipe,
   CommonModule,
   PRECOMMIT_HANDLER_SUPPORTED,
   PlatformNavigation,
@@ -30231,4 +30237,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-UC2EJXZ5.js.map
+//# sourceMappingURL=chunk-267HQEHF.js.map

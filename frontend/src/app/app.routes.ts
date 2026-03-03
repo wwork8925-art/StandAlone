@@ -26,6 +26,20 @@ export const routes: Routes = [
 
   },
   {
+    path: 'guests-help', loadComponent:() => import('./components/guests-help/guests-help').then((m) => m.GuestsHelp)
+
+  },
+
+  {
+    path: 'generalview', loadComponent:() => import('./components/generalview/generalview').then((m) => m.Generalview)
+
+  },
+
+
+
+
+
+  {
     path: 'admin',
     loadComponent: () => import('./components/admin/admin').then((m) => m.Admin),
     canActivate: [adminGuard],

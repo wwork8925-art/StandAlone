@@ -1,0 +1,25 @@
+<!-- ====================
+     مكون عرض الإشعارات
+     ==================== -->
+
+<div class="notifications-container">
+  <!-- نستخدم ()notifications لقراءة قيمة الـ Signal -->
+  <!-- @for هو الطريقة الجديدة في Angular 17+ بدلاً من *ngFor -->
+  @for (notification of notifications(); track notification.id) {
+    <div class="notification" [class]="'notification-' + notification.type">
+      <!-- أيقونة الإشعار -->
+      <span class="notification-icon">{{ getIcon(notification.type) }}</span>
+      
+      <!-- نص الإشعار -->
+      <span class="notification-message">{{ notification.message }}</span>
+      
+      <!-- زر الإغلاق -->
+      <button 
+        class="notification-close" 
+        (click)="closeNotification(notification.id)"
+        aria-label="إغلاق">
+        ×
+      </button>
+    </div>
+  }
+</div>

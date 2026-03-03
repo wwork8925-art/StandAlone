@@ -1,136 +1,573 @@
-﻿.page-header {
+﻿/* 🌈 FRUTIGER AERO PAGE - Full Vista/Aqua Aesthetic */
+.page-container {
+  padding: 2.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Sky/water gradient background */
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 200, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(100, 255, 200, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, 
+      #c7e9ff 0%,
+      #e0f4ff 30%,
+      #f0f9ff 60%,
+      #e8f5ff 100%);
+  min-height: 100vh;
+  direction: rtl;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating bubble decorations */
+.page-container::before {
+  content: '';
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle,
+    rgba(0, 200, 255, 0.2) 0%,
+    rgba(100, 230, 255, 0.1) 40%,
+    transparent 70%);
+  border-radius: 50%;
+  top: -100px;
+  right: 10%;
+  animation: float-bubble 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.page-container::after {
+  content: '';
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle,
+    rgba(100, 255, 200, 0.15) 0%,
+    rgba(150, 255, 220, 0.08) 50%,
+    transparent 70%);
+  border-radius: 50%;
+  bottom: -150px;
+  left: 5%;
+  animation: float-bubble 20s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes float-bubble {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, -20px) scale(0.95); }
+}
+
+/* Header - Glossy style */
+.page-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
-.loading-state {
-  text-align: center;
-  padding: 16px;
-  color: #000;
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  
+  /* Glossy gradient text */
+  background: linear-gradient(135deg, 
+    #0066cc 0%,
+    #0099ff 50%,
+    #00ccff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Glow effect */
+  filter: drop-shadow(0 2px 8px rgba(0, 150, 255, 0.4))
+          drop-shadow(0 4px 15px rgba(0, 200, 255, 0.2));
+  letter-spacing: 1px;
+  position: relative;
 }
 
-.empty-state {
-  text-align: center;
-  padding: 24px;
-  color: #808080;
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg,
+    #0096ff 0%,
+    rgba(0, 200, 255, 0.5) 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 150, 255, 0.4);
+}
+
+.btn-primary {
+  padding: 0.8rem 1.8rem;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  /* Glossy button */
+  background: linear-gradient(180deg,
+    rgba(0, 150, 255, 0.95) 0%,
+    rgba(0, 120, 220, 0.9) 50%,
+    rgba(0, 100, 200, 0.95) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: 2px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    0 6px 20px rgba(0, 150, 255, 0.4),
+    0 2px 5px rgba(255, 255, 255, 0.3) inset;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glossy shine effect */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg,
+    rgba(0, 180, 255, 1) 0%,
+    rgba(0, 150, 235, 0.95) 50%,
+    rgba(0, 120, 220, 1) 100%);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 30px rgba(0, 150, 255, 0.5),
+    0 3px 8px rgba(255, 255, 255, 0.4) inset;
+}
+
+/* Loading & Empty States - Aero style */
+.loading-state, .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(0, 150, 255, 0.15);
+  border-top: 5px solid #0096ff;
+  border-right: 5px solid #00c8ff;
+  border-radius: 50%;
+  animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  box-shadow: 
+    0 4px 15px rgba(0, 150, 255, 0.3),
+    0 0 0 8px rgba(0, 150, 255, 0.05);
+  position: relative;
+}
+
+/* Inner glow */
+.spinner::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0, 200, 255, 0.2) 0%,
+    transparent 70%);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .empty-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  font-size: 5rem;
+  filter: drop-shadow(0 4px 15px rgba(0, 150, 255, 0.3));
+  background: linear-gradient(135deg, #0096ff 0%, #00c8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+.loading-state p, .empty-state p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0066cc;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* Hostels Grid */
 .hostels-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
+/* Hostel Card - Full Aero glass effect */
 .hostel-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  
+  /* Multi-layer glass effect */
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(240, 250, 255, 0.6) 50%,
+    rgba(230, 245, 255, 0.7) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top: 3px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  
+  /* Layered shadows for depth */
+  box-shadow: 
+    0 8px 32px rgba(0, 150, 255, 0.15),
+    0 2px 8px rgba(255, 255, 255, 0.5) inset,
+    0 15px 45px rgba(0, 100, 200, 0.1);
+  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-  color: #000;
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #808080;
-  border-bottom: 2px solid #808080;
-  border-radius: 0;
+  color: #1a1a1a;
+  position: relative;
+  overflow: visible;
+}
+
+/* Glossy reflection */
+.hostel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 100%);
+  pointer-events: none;
+  border-radius: 24px 24px 0 0;
+  z-index: 1;
+}
+
+/* Bubble glow */
+.hostel-card::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle,
+    rgba(0, 200, 255, 0.3) 0%,
+    transparent 70%);
+  border-radius: 50%;
+  top: -30px;
+  right: -30px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .hostel-card:hover {
-  background: #d4d4d4;
-  color: #000;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 15px 50px rgba(0, 150, 255, 0.3),
+    0 3px 15px rgba(255, 255, 255, 0.6) inset,
+    0 20px 60px rgba(0, 200, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
+.hostel-card:hover::after {
+  opacity: 1;
+}
+
+/* Hostel Image - Glossy frame */
 .hostel-image {
-  width: 100%;
-  height: 160px;
+  position: relative;
   overflow: hidden;
-  background: #808080;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hostel-image img {
   width: 100%;
-  height: 100%;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 0;
+}
+
+/* Glass overlay on image */
+.hostel-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%,
+    rgba(0, 150, 255, 0.05) 100%);
+  pointer-events: none;
 }
 
 .no-image {
-  font-size: 3rem;
-  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 3.5rem;
+  
+  /* Gradient background */
+  background: linear-gradient(135deg,
+    rgba(0, 150, 255, 0.2) 0%,
+    rgba(100, 200, 255, 0.15) 50%,
+    rgba(0, 180, 255, 0.2) 100%);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  
+  color: #0096ff;
+  filter: drop-shadow(0 2px 8px rgba(0, 150, 255, 0.3));
 }
 
+/* Hostel Info */
 .hostel-info {
-  padding: 8px;
+  padding: 1.3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hostel-name {
-  font-size: 13px;
-  font-weight: bold;
-  color: #000080;
-  margin-bottom: 2px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  
+  /* Glossy gradient text */
+  background: linear-gradient(135deg,
+    #0066cc 0%,
+    #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  filter: drop-shadow(0 1px 3px rgba(0, 100, 200, 0.2));
+  letter-spacing: 0.3px;
 }
 
 .hostel-location {
-  color: #444;
-  font-size: 12px;
-  margin-bottom: 6px;
+  font-size: 1rem;
+  color: #2d5a7b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.occupancy {
-  margin-bottom: 6px;
-}
-
+/* Occupancy - Glossy progress bar */
 .occupancy-labels {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
-  color: #444;
-  margin-bottom: 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d5a7b;
 }
 
 .occupancy-bar {
-  background: #808080;
-  border: 1px inset #808080;
-  height: 8px;
+  width: 100%;
+  height: 14px;
+  background: linear-gradient(180deg,
+    rgba(200, 220, 240, 0.4) 0%,
+    rgba(220, 235, 250, 0.3) 100%);
+  border: 1px solid rgba(0, 100, 200, 0.15);
+  border-radius: 10px;
   overflow: hidden;
+  margin-top: 0.5rem;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.05) inset,
+    0 1px 2px rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+/* Glass overlay on bar */
+.occupancy-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 100%);
+  pointer-events: none;
 }
 
 .occupancy-fill {
   height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.occupancy-fill.available { background: #008000; }
-.occupancy-fill.medium    { background: #808000; }
-.occupancy-fill.full      { background: #ff0000; }
+/* Glossy fill effects */
+.occupancy-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 100%);
+  border-radius: 10px 10px 0 0;
+}
 
+/* Occupancy classes with gradients */
+.available { 
+  background: linear-gradient(135deg, #28d96a 0%, #20c463 100%);
+}
+
+.semi-full { 
+  background: linear-gradient(135deg, #ffd54f 0%, #ffc107 100%);
+}
+
+.full { 
+  background: linear-gradient(135deg, #ff6b6b 0%, #dc3545 100%);
+}
+
+/* Footer */
 .hostel-footer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .occupancy-badge {
-  font-size: 11px;
-  font-weight: bold;
-  padding: 1px 6px;
-  border: 1px solid #808080;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(255, 255, 255, 0.3) inset;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-.badge-available { background: #ccffcc; color: #006600; }
-.badge-medium    { background: #ffffcc; color: #666600; }
-.badge-full      { background: #ffcccc; color: #990000; }
+/* Glossy overlay on badges */
+.occupancy-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 100%);
+  pointer-events: none;
+}
 
+.badge-available { 
+  background: linear-gradient(180deg, #28d96a 0%, #20c463 100%);
+}
+
+.badge-semi-full { 
+  background: linear-gradient(180deg, #ffd54f 0%, #ffc107 100%);
+  color: #4a3c00;
+}
+
+.badge-full { 
+  background: linear-gradient(180deg, #ff6b6b 0%, #dc3545 100%);
+}
+
+/* View details - Glossy link */
 .view-details {
-  font-size: 12px;
-  color: #0000ee;
-  font-weight: normal;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  
+  background: linear-gradient(180deg,
+    rgba(0, 150, 255, 0.25) 0%,
+    rgba(0, 120, 220, 0.2) 100%);
+  border: 1px solid rgba(0, 150, 255, 0.3);
+  color: #0066cc;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 150, 255, 0.15);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hostel-card:hover .view-details {
+  background: linear-gradient(180deg,
+    rgba(0, 150, 255, 0.4) 0%,
+    rgba(0, 120, 220, 0.35) 100%);
+  border-color: rgba(0, 150, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 150, 255, 0.3);
+  transform: translateX(-5px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hostels-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .page-container {
+    padding: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .hostel-card {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-container {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }

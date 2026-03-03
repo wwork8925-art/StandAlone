@@ -54,6 +54,15 @@ export class RequestService {
   // status → القيم المسموحة: 'Approved' أو 'Rejected'
   // -----------------------------------------------------------------
   updateStatus(id: number, status: string): Observable<void> {
-    return this.http.put<void>(`${this.API}/${id}`, { status });
+    return this.http.put<void>(`${this.API}/${id}`, { status })
+
   }
+
+  getUserCount(): Observable<number> {
+    return this.http.get<number>('http://localhost:5003/api/genralrequest/count');
+  }
+
+
+
+
 }

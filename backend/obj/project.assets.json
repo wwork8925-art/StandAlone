@@ -2833,11 +2833,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\27767574\\Desktop\\MOD\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\27767574\\Desktop\\StandAloneProject(lazy_loading)\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\27767574\\Desktop\\MOD\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\27767574\\Desktop\\StandAloneProject(lazy_loading)\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\27767574\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\27767574\\Desktop\\MOD\\backend\\obj\\",
+      "outputPath": "C:\\Users\\27767574\\Desktop\\StandAloneProject(lazy_loading)\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\27767574\\AppData\\Roaming\\NuGet\\NuGet.Config"

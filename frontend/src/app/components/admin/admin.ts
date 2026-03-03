@@ -1,14 +1,16 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HostelService, Hostel } from '../../services/hostel.service';
 import { UserService, UserDto } from '../../services/user.service';
 import { RequestService, HostelRequest } from '../../services/request.service';
+import { NotificationService } from '../../services/notification.service';
 
 type Tab = 'hostels' | 'users' | 'requests';
 
 @Component({
   selector: 'app-admin',
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin.html',
   styleUrl: './admin.css',
 })
@@ -16,6 +18,7 @@ export class Admin implements OnInit {
   private hostelService = inject(HostelService);
   private userService = inject(UserService);
   private requestService = inject(RequestService);
+  private notificationService = inject(NotificationService);
 
   activeTab = signal<Tab>('hostels');
 
@@ -152,10 +155,16 @@ export class Admin implements OnInit {
     this.userService.updateRole(user.id, newRole).subscribe({
       next: () => {
         this.users.update((prev) => prev.map((u) => u.id === user.id ? { ...u, role: newRole } : u));
-        this.usersSuccess.set('تم تحديث الصلاحية');
+        const message = `تم تحديث صلاحية ${user.username} إلى ${newRole}`;
+        this.usersSuccess.set(message);
+        this.notificationService.info(message);
         setTimeout(() => this.usersSuccess.set(''), 3000);
       },
-      error: (err) => this.usersError.set(err?.error?.message ?? 'حدث خطأ'),
+      error: (err) => {
+        const errorMsg = err?.error?.message ?? 'حدث خطأ';
+        this.usersError.set(errorMsg);
+        this.notificationService.error(errorMsg);
+      },
     });
   }
 
@@ -164,10 +173,16 @@ export class Admin implements OnInit {
     this.userService.delete(user.id).subscribe({
       next: () => {
         this.users.update((prev) => prev.filter((u) => u.id !== user.id));
-        this.usersSuccess.set('تم حذف المستخدم');
+        const message = `تم حذف المستخدم ${user.username}`;
+        this.usersSuccess.set(message);
+        this.notificationService.warning(message);
         setTimeout(() => this.usersSuccess.set(''), 3000);
       },
-      error: (err) => this.usersError.set(err?.error?.message ?? 'حدث خطأ'),
+      error: (err) => {
+        const errorMsg = err?.error?.message ?? 'حدث خطأ';
+        this.usersError.set(errorMsg);
+        this.notificationService.error(errorMsg);
+      },
     });
   }
 
@@ -186,10 +201,16 @@ export class Admin implements OnInit {
         this.requests.update((prev) =>
           prev.map((r) => r.id === req.id ? { ...r, status } : r)
         );
-        this.requestsSuccess.set(`تم ${status === 'Approved' ? 'قبول' : 'رفض'} الطلب`);
+        const message = `تم ${status === 'Approved' ? 'قبول' : 'رفض'} طلب ${req.username}`;
+        this.requestsSuccess.set(message);
+        this.notificationService.success(message);
         setTimeout(() => this.requestsSuccess.set(''), 3000);
       },
-      error: (err) => this.requestsError.set(err?.error?.message ?? 'حدث خطأ'),
+      error: (err) => {
+        const errorMsg = err?.error?.message ?? 'حدث خطأ';
+        this.requestsError.set(errorMsg);
+        this.notificationService.error(errorMsg);
+      },
     });
   }
 

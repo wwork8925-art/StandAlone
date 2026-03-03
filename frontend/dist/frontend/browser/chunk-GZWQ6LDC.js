@@ -27,7 +27,6 @@ import {
   HostAttributeToken,
   HostBinding,
   HostListener,
-  HttpClient,
   INJECTOR_SCOPE,
   INTERNAL_APPLICATION_ERROR_HANDLER,
   IS_ENABLED_BLOCKING_INITIAL_NAVIGATION,
@@ -151,7 +150,7 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-UC2EJXZ5.js";
+} from "./chunk-267HQEHF.js";
 
 // node_modules/@angular/platform-browser/fesm2022/_dom_renderer-chunk.mjs
 var EventManagerPlugin = class {
@@ -7127,68 +7126,13 @@ function provideRouterInitializer() {
   }];
 }
 
-// src/app/services/auth.service.ts
-var AuthService = class _AuthService {
-  http;
-  API = "http://localhost:5003/api/auth";
-  STORAGE_KEY = "auth_user";
-  _user = signal(this.loadUser(), ...ngDevMode ? [{ debugName: "_user" }] : []);
-  user = this._user.asReadonly();
-  isLoggedIn = computed(() => this._user() !== null, ...ngDevMode ? [{ debugName: "isLoggedIn" }] : []);
-  isAdmin = computed(() => this._user()?.role === "Admin", ...ngDevMode ? [{ debugName: "isAdmin" }] : []);
-  constructor(http) {
-    this.http = http;
-  }
-  loadUser() {
-    try {
-      const stored = localStorage.getItem(this.STORAGE_KEY);
-      return stored ? JSON.parse(stored) : null;
-    } catch {
-      return null;
-    }
-  }
-  login(username, password) {
-    return this.http.post(`${this.API}/login`, { username, password }).pipe(tap((res) => this.setUser(res)));
-  }
-  register(dto) {
-    return this.http.post(`${this.API}/register`, dto).pipe(tap((res) => this.setUser(res)));
-  }
-  logout() {
-    localStorage.removeItem(this.STORAGE_KEY);
-    this._user.set(null);
-  }
-  getToken() {
-    return this._user()?.token ?? null;
-  }
-  uploadProfileImage(file) {
-    const formData = new FormData();
-    formData.append("file", file);
-    return this.http.post(`${this.API}/upload-profile-image`, formData);
-  }
-  setUser(user) {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(user));
-    this._user.set(user);
-  }
-  static \u0275fac = function AuthService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AuthService)(\u0275\u0275inject(HttpClient));
-  };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthService, factory: _AuthService.\u0275fac, providedIn: "root" });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AuthService, [{
-    type: Injectable,
-    args: [{ providedIn: "root" }]
-  }], () => [{ type: HttpClient }], null);
-})();
-
 export {
   bootstrapApplication,
   ActivatedRoute,
   RouterOutlet,
   Router,
   RouterLink,
-  provideRouter,
-  AuthService
+  provideRouter
 };
 /*! Bundled license information:
 
@@ -7204,4 +7148,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-JJ33MNBI.js.map
+//# sourceMappingURL=chunk-GZWQ6LDC.js.map

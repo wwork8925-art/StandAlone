@@ -2,41 +2,58 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 25px;
+  padding: 0 20px;
 }
 
 .back-link {
-  color: #0000ee;
-  font-weight: normal;
-  font-size: 13px;
-  text-decoration: underline;
+  color: #0066cc;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(240, 248, 255, 0.65) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 150, 255, 0.2);
+  transition: all 0.3s ease;
 }
 
 .back-link:hover {
-  color: #ff0000;
+  background: linear-gradient(135deg, rgba(0, 150, 255, 0.15) 0%, rgba(0, 120, 235, 0.12) 100%);
+  border-color: rgba(0, 150, 255, 0.3);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
 }
 
 .detail-layout {
   display: grid;
-  grid-template-columns: 1fr 260px;
-  gap: 8px;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  padding: 0 20px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .detail-layout { grid-template-columns: 1fr; }
 }
 
-/* Gallery */
+/* Professional Glass Gallery */
 .gallery {
-  margin-bottom: 8px;
-  border: 1px solid #808080;
+  margin-bottom: 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(240, 248, 255, 0.65) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 150, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-main {
   width: 100%;
-  height: 280px;
+  height: 420px;
   overflow: hidden;
-  background: #808080;
+  background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+  position: relative;
 }
 
 .main-image {
@@ -47,179 +64,242 @@
 
 .gallery-thumbs {
   display: flex;
-  gap: 2px;
-  padding: 4px;
+  gap: 8px;
+  padding: 12px;
   overflow-x: auto;
-  background: #c0c0c0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 248, 255, 0.8) 100%);
+  backdrop-filter: blur(10px);
 }
 
 .thumb {
-  width: 60px;
-  height: 48px;
+  width: 80px;
+  height: 64px;
   object-fit: cover;
   cursor: pointer;
   opacity: 0.7;
-  border: 2px solid transparent;
+  border: 2px solid rgba(0, 150, 255, 0.2);
   flex-shrink: 0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .thumb.active,
 .thumb:hover {
   opacity: 1;
-  border-color: #000080;
+  border-color: rgba(0, 120, 255, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.25);
+  transform: translateY(-2px);
 }
 
 .no-image-large {
   text-align: center;
   font-size: 5rem;
-  padding: 16px;
-  background: #808080;
-  margin-bottom: 8px;
+  padding: 32px;
+  background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+  margin-bottom: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 150, 255, 0.15);
 }
 
-/* Details Card */
+/* Professional Glass Details Card */
 .hostel-details {
-  padding: 8px;
-  margin-bottom: 8px;
-  background: #ffffff;
-  border: 1px solid #808080;
+  padding: 28px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 248, 255, 0.82) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 150, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.hostel-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .hostel-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #000080;
-  margin-bottom: 4px;
+  font-size: 2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
 }
 
 .hostel-loc {
-  color: #444;
-  font-size: 12px;
-  margin-bottom: 8px;
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
 .hostel-info-text {
-  background: #eeeeee;
-  border: 1px inset #808080;
-  padding: 6px;
-  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 150, 255, 0.12);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
 }
 
 .hostel-info-text h3 {
-  font-size: 12px;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 3px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0066cc;
+  margin-bottom: 10px;
 }
 
 .hostel-info-text p {
-  color: #333;
-  font-size: 12px;
-  line-height: 1.5;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* Occupancy */
+/* Occupancy Section */
 .occupancy-section h3 {
-  font-size: 13px;
-  font-weight: bold;
-  color: #000080;
-  margin-bottom: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0066cc;
+  margin-bottom: 16px;
 }
 
 .occ-stats {
   display: flex;
-  gap: 12px;
-  margin-bottom: 6px;
+  gap: 24px;
+  margin-bottom: 18px;
+  justify-content: space-around;
 }
 
 .occ-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  min-width: 90px;
 }
 
 .occ-value {
-  font-size: 18px;
-  font-weight: bold;
-  color: #000080;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .occ-label {
-  font-size: 11px;
-  color: #444;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 4px;
 }
 
 .occupancy-bar {
-  background: #808080;
-  border: 1px inset #808080;
-  height: 10px;
+  background: rgba(200, 220, 240, 0.6);
+  border: 1px solid rgba(0, 150, 255, 0.2);
+  border-radius: 10px;
+  height: 18px;
   overflow: hidden;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) inset;
 }
 
 .occupancy-fill {
   height: 100%;
-  background: #000080;
+  background: linear-gradient(90deg, rgba(0, 120, 235, 0.88) 0%, rgba(0, 160, 255, 0.85) 100%);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+  transition: width 0.6s ease;
 }
 
 .occ-pct {
-  font-size: 12px;
-  color: #444;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
 }
 
-/* Comments */
+/* Professional Glass Comments Section */
 .comments-section {
-  margin-top: 4px;
+  margin-top: 24px;
 }
 
 .comment-form {
-  padding: 8px;
-  background: #ffffff;
-  border: 1px solid #808080;
-  margin-bottom: 8px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 248, 255, 0.82) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 150, 255, 0.15);
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .comment-textarea {
   width: 100%;
-  padding: 4px;
-  border-top: 2px solid #808080;
-  border-left: 2px solid #808080;
-  border-right: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
+  padding: 14px;
+  border: 1px solid rgba(0, 150, 255, 0.2);
+  border-radius: 12px;
   resize: vertical;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  color: #000;
-  margin-bottom: 6px;
-  background: #ffffff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  min-height: 100px;
 }
 
 .comment-textarea:focus {
-  outline: 1px dotted #000;
+  outline: none;
+  border-color: rgba(0, 120, 255, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(0, 150, 255, 0.1);
 }
 
 .login-prompt {
-  margin-bottom: 8px;
-  color: #444;
-  font-size: 12px;
+  margin-bottom: 18px;
+  color: #555;
+  font-size: 0.95rem;
+  padding: 14px;
+  background: rgba(255, 248, 220, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 193, 7, 0.2);
 }
 
 .login-prompt a {
-  color: #0000ee;
+  color: #0066cc;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-prompt a:hover {
+  color: #0099ff;
+  text-decoration: underline;
 }
 
 .no-comments {
-  color: #808080;
+  color: #999;
   font-style: italic;
-  font-size: 12px;
-  padding: 8px 0;
+  font-size: 0.95rem;
+  padding: 24px;
+  text-align: center;
+  background: rgba(240, 240, 240, 0.4);
+  border-radius: 12px;
 }
 
 .comment-item {
   display: flex;
-  gap: 8px;
-  padding: 6px 0;
-  border-bottom: 1px dashed #808080;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 150, 255, 0.1);
 }
 
 .comment-item:last-child {
@@ -227,74 +307,99 @@
 }
 
 .comment-avatar {
-  width: 32px;
-  height: 32px;
-  background: #000080;
-  color: #fff;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(0, 120, 235, 0.88) 0%, rgba(0, 100, 215, 0.85) 100%);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 1.1rem;
   flex-shrink: 0;
-  border: 1px solid #fff;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .comment-body { flex: 1; }
 
 .comment-meta {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: center;
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 
 .comment-author {
-  font-weight: bold;
-  font-size: 12px;
-  color: #000080;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0066cc;
 }
 
 .comment-date {
-  font-size: 11px;
-  color: #808080;
+  font-size: 0.85rem;
+  color: #999;
 }
 
 .comment-text {
-  font-size: 12px;
-  color: #222;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
 }
 
-/* Sidebar */
+/* Professional Glass Sidebar */
 .sidebar-card {
-  padding: 8px;
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #808080;
-  border-bottom: 2px solid #808080;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 248, 255, 0.82) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 150, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 50px;
+  top: 80px;
+  overflow: hidden;
+}
+
+.sidebar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .sidebar-card h3 {
-  font-size: 13px;
-  font-weight: bold;
-  color: #000080;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #808080;
-  padding-bottom: 3px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  border-bottom: 2px solid rgba(0, 150, 255, 0.2);
+  padding-bottom: 10px;
 }
 
 .sidebar-note {
-  color: #333;
-  font-size: 12px;
-  margin-bottom: 8px;
-  line-height: 1.4;
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  line-height: 1.6;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
 }
 
-.sidebar-note.occupied { color: #008000; }
+.sidebar-note.occupied {
+  color: #28a745;
+  background: rgba(230, 255, 237, 0.6);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+  font-weight: 600;
+}
 
 .btn-full {
   width: 100%;
@@ -302,6 +407,6 @@
 }
 
 .btn-sm {
-  padding: 2px 8px;
-  font-size: 12px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
 }
